@@ -71,7 +71,7 @@
 				F8117D212A65DE9E00973DF4 /* Assets.xcassets */,
 				F8117D232A65DE9E00973DF4 /* Preview Content */,
 			);
-			path = Uber;
+			path = "";
 			sourceTree = "<group>";
 		};
 		F8117D232A65DE9E00973DF4 /* Preview Content */ = {
@@ -378,7 +378,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Uber/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Preview Content\"";
 				DEVELOPMENT_TEAM = 4RVQ5686Z7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
