@@ -53,8 +53,8 @@ extension UberMapViewRepresentable {
     }
 }
 
-//struct UberMapViewRepresentable_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UberMapViewRepresentable()
-//    }
-//}
+struct UberMapViewRepresentable_Previews: PreviewProvider {
+    static var previews: some View {
+        UberMapViewRepresentable()
+    }
+}
