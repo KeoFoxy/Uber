@@ -14,7 +14,6 @@ struct UberApp: App {
         WindowGroup {
             HomeView()
                 .environmentObject(locationViewModel)
-                .statusBarStyle
         }
     }
 }
