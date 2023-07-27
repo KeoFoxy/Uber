@@ -23,6 +23,7 @@
 		F8CA559D2A72A1A600CBC6A7 /* RideType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA559C2A72A1A600CBC6A7 /* RideType.swift */; };
 		F8CA559F2A73032600CBC6A7 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA559E2A73032600CBC6A7 /* Double.swift */; };
 		F8CA55A12A730EE700CBC6A7 /* UberLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA55A02A730EE700CBC6A7 /* UberLocation.swift */; };
+		F8CA55A32A7315DC00CBC6A7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA55A22A7315DC00CBC6A7 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		F8CA559C2A72A1A600CBC6A7 /* RideType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideType.swift; sourceTree = "<group>"; };
 		F8CA559E2A73032600CBC6A7 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		F8CA55A02A730EE700CBC6A7 /* UberLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberLocation.swift; sourceTree = "<group>"; };
+		F8CA55A22A7315DC00CBC6A7 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				F8CA559E2A73032600CBC6A7 /* Double.swift */,
+				F8CA55A22A7315DC00CBC6A7 /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				F8117D4B2A6861FE00973DF4 /* MapViewState.swift in Sources */,
 				F8117D432A66AD3800973DF4 /* MapViewActionButton.swift in Sources */,
 				F8117D1E2A65DE9C00973DF4 /* UberApp.swift in Sources */,
+				F8CA55A32A7315DC00CBC6A7 /* Color.swift in Sources */,
 				F8117D392A65E1C100973DF4 /* UberMapViewRepresentable.swift in Sources */,
 				F8117D372A65DFD200973DF4 /* HomeView.swift in Sources */,
 				F8CA55A12A730EE700CBC6A7 /* UberLocation.swift in Sources */,
