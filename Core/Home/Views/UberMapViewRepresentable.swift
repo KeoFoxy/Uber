@@ -31,10 +31,11 @@ struct UberMapViewRepresentable: UIViewRepresentable {
             case .noInput:
                 context.coordinator.clearMapViewAndRecenterOnUserLocation()
                 break
-            case .locationSelected:
-                break
             case .searchingForLocation:
+                break
+            case .locationSelected:
                 if let coordinate = locationViewModel.selectedLocationCoordinate {
+                    print("DEBUG: Coordinate is \(coordinate)")
                     context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate)
                     context.coordinator.configurePolyline(withDestinationCoordinate: coordinate)
                 }
@@ -92,6 +93,9 @@ extension UberMapViewRepresentable {
             parent.mapView.removeAnnotations(parent.mapView.annotations)
             let anno = MKPointAnnotation()
             anno.coordinate = coordinate
+            
+            print("DEBUG: Annotation Coordinated getted: \(anno.coordinate)")
+            
             self.parent.mapView.addAnnotation(anno)
             self.parent.mapView.selectAnnotation(anno, animated: true)
             
@@ -103,7 +107,11 @@ extension UberMapViewRepresentable {
             getDestinationRoute(from: userLocationCoordinate,
                                 to: coordinate) { route in
                 self.parent.mapView.addOverlay(route.polyline)
-                
+                print("DEBUG: Polyline created \(route.polyline)")
+                let rect = self.parent.mapView.mapRectThatFits(route.polyline.boundingMapRect,
+                                                               edgePadding: .init(top: 64, left: 32,
+                                                                                  bottom: 500, right: 32))
+                self.parent.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
             }
         }
         
@@ -123,6 +131,7 @@ extension UberMapViewRepresentable {
                 }
                 
                 guard let route = response?.routes.first else { return }
+                print("DEBUG: route getted \(route)")
                 completion(route)
             }
         }
