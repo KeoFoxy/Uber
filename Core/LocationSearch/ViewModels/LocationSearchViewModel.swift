@@ -9,6 +9,7 @@ import Foundation
 import MapKit
 
 class LocationSearchViewModel: NSObject, ObservableObject {
+    
     // MARK: Properties
     
     @Published var results = [MKLocalSearchCompletion]()
@@ -20,6 +21,8 @@ class LocationSearchViewModel: NSObject, ObservableObject {
             searchCompleter.queryFragment = queryFragment
         }
     }
+    
+    var userLocation: CLLocationCoordinate2D?
     
     //MARK: Lifecycle
     
@@ -51,6 +54,17 @@ class LocationSearchViewModel: NSObject, ObservableObject {
         let search = MKLocalSearch(request: searchRequest)
         
         search.start(completionHandler: completion)
+    }
+    
+    func computeRidePrice(forType type: RideType) -> Double {
+        guard let destCoordinate = selectedLocationCoordinate else { return 0 }
+        guard let userCoordinate = self.userLocation else { return 0 }
+        
+        let userLocation = CLLocation(latitude: userCoordinate.latitude, longitude: userCoordinate.longitude)
+        let destination = CLLocation(latitude: destCoordinate.latitude, longitude: destCoordinate.longitude)
+        let tripDistance = userLocation.distance(from: destination)
+        
+        return type.computePrice(for: tripDistance)
     }
 }
 
