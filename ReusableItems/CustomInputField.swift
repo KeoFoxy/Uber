@@ -35,7 +35,16 @@ struct CustomInputField: View {
     /// By default it shows typing
     /// In case you wanna use passowrd input
     /// Set `isSecureField` to `true`
-    var isSecureField: Bool =  false
+    var isSecureField: Bool = false
+    
+    /// Settings for the TextField
+    /// TextField automatically
+    /// capitalizes the first letter of your input
+    /// If you create a TextField for email, for example
+    /// you dont want autocapitalization
+    /// and by default it is off
+    /// If you need it, change `isCapitalizedField` value to `true`
+    var isCapitalizedField: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -49,9 +58,14 @@ struct CustomInputField: View {
             
             if isSecureField {
                 SecureField(placeholder, text: $text)
+                    .autocapitalization(.none)
+                    .foregroundColor(textColor)
+            } else if isCapitalizedField {
+                TextField(placeholder, text: $text)
                     .foregroundColor(textColor)
             } else {
                 TextField(placeholder, text: $text)
+                    .autocapitalization(.none)
                     .foregroundColor(textColor)
             }
             
