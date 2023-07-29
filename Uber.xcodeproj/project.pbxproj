@@ -34,6 +34,9 @@
 		F8CA55B82A755D1600CBC6A7 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F8CA55B72A755D1600CBC6A7 /* FirebaseStorage */; };
 		F8CA55BA2A75615700CBC6A7 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA55B92A75615700CBC6A7 /* AuthViewModel.swift */; };
 		F8CA55BC2A758BC500CBC6A7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA55BB2A758BC500CBC6A7 /* User.swift */; };
+		F8CA55C12A75AADC00CBC6A7 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA55C02A75AADC00CBC6A7 /* SideMenuView.swift */; };
+		F8CA55C32A75B7CD00CBC6A7 /* SideMenuOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA55C22A75B7CD00CBC6A7 /* SideMenuOptionViewModel.swift */; };
+		F8CA55C52A75B8BE00CBC6A7 /* SideMenuOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA55C42A75B8BE00CBC6A7 /* SideMenuOptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +64,9 @@
 		F8CA55AE2A7559EB00CBC6A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F8CA55B92A75615700CBC6A7 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		F8CA55BB2A758BC500CBC6A7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F8CA55C02A75AADC00CBC6A7 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		F8CA55C22A75B7CD00CBC6A7 /* SideMenuOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionViewModel.swift; sourceTree = "<group>"; };
+		F8CA55C42A75B8BE00CBC6A7 /* SideMenuOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +154,7 @@
 		F8117D302A65DEEB00973DF4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F8CA55BD2A75AA9F00CBC6A7 /* SideMenu */,
 				F8CA55A42A73D34200CBC6A7 /* Authentication */,
 				F8B53F412A715943002AD317 /* Trips */,
 				F8117D3D2A66AB3F00973DF4 /* LocationSearch */,
@@ -259,6 +266,32 @@
 			path = ReusableItems;
 			sourceTree = "<group>";
 		};
+		F8CA55BD2A75AA9F00CBC6A7 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				F8CA55BF2A75AAAB00CBC6A7 /* ViewModels */,
+				F8CA55BE2A75AAA800CBC6A7 /* Views */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		F8CA55BE2A75AAA800CBC6A7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F8CA55C02A75AADC00CBC6A7 /* SideMenuView.swift */,
+				F8CA55C42A75B8BE00CBC6A7 /* SideMenuOptionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F8CA55BF2A75AAAB00CBC6A7 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F8CA55C22A75B7CD00CBC6A7 /* SideMenuOptionViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -342,6 +375,7 @@
 				F8117D492A66DAE100973DF4 /* LocationSearchViewModel.swift in Sources */,
 				F8117D452A66AF7C00973DF4 /* LocationSearchView.swift in Sources */,
 				F8117D3B2A65EC2400973DF4 /* LocationManager.swift in Sources */,
+				F8CA55C32A75B7CD00CBC6A7 /* SideMenuOptionViewModel.swift in Sources */,
 				F8B53F432A715963002AD317 /* RideRequestView.swift in Sources */,
 				F8CA559F2A73032600CBC6A7 /* Double.swift in Sources */,
 				F8CA55AA2A73D37D00CBC6A7 /* RegistrationView.swift in Sources */,
@@ -351,9 +385,11 @@
 				F8117D432A66AD3800973DF4 /* MapViewActionButton.swift in Sources */,
 				F8117D1E2A65DE9C00973DF4 /* UberApp.swift in Sources */,
 				F8CA55A32A7315DC00CBC6A7 /* Color.swift in Sources */,
+				F8CA55C52A75B8BE00CBC6A7 /* SideMenuOptionView.swift in Sources */,
 				F8117D392A65E1C100973DF4 /* UberMapViewRepresentable.swift in Sources */,
 				F8117D372A65DFD200973DF4 /* HomeView.swift in Sources */,
 				F8CA55A12A730EE700CBC6A7 /* UberLocation.swift in Sources */,
+				F8CA55C12A75AADC00CBC6A7 /* SideMenuView.swift in Sources */,
 				F8117D412A66AB9700973DF4 /* LocationSearchActivationView.swift in Sources */,
 				F8117D472A66B3FF00973DF4 /* LocationSearchResultCell.swift in Sources */,
 				F8CA55A82A73D36C00CBC6A7 /* LoginView.swift in Sources */,
