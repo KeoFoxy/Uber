@@ -17,11 +17,11 @@ struct HomeView: View {
         Group {
             if authViewModel.userSession == nil {
                 LoginView()
-            } else {
+            } else if let user = authViewModel.currentUser {
                 NavigationStack {
                     ZStack {
                         if showSideMenu {
-                            SideMenuView(user: authViewModel.currentUser ?? User(fullname: "awdaw", email: "awdawd", uid: "124214"))
+                            SideMenuView(user: user)
                         }
                         
                         mapView
