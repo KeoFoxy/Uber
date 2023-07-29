@@ -33,6 +33,7 @@
 		F8CA55B62A755D1600CBC6A7 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F8CA55B52A755D1600CBC6A7 /* FirebaseFirestoreSwift */; };
 		F8CA55B82A755D1600CBC6A7 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F8CA55B72A755D1600CBC6A7 /* FirebaseStorage */; };
 		F8CA55BA2A75615700CBC6A7 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA55B92A75615700CBC6A7 /* AuthViewModel.swift */; };
+		F8CA55BC2A758BC500CBC6A7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA55BB2A758BC500CBC6A7 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		F8CA55AC2A74021600CBC6A7 /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
 		F8CA55AE2A7559EB00CBC6A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F8CA55B92A75615700CBC6A7 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		F8CA55BB2A758BC500CBC6A7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				F8117D4A2A6861FE00973DF4 /* MapViewState.swift */,
 				F8CA559C2A72A1A600CBC6A7 /* RideType.swift */,
 				F8CA55A02A730EE700CBC6A7 /* UberLocation.swift */,
+				F8CA55BB2A758BC500CBC6A7 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				F8CA55AA2A73D37D00CBC6A7 /* RegistrationView.swift in Sources */,
 				F8CA55BA2A75615700CBC6A7 /* AuthViewModel.swift in Sources */,
 				F8117D4B2A6861FE00973DF4 /* MapViewState.swift in Sources */,
+				F8CA55BC2A758BC500CBC6A7 /* User.swift in Sources */,
 				F8117D432A66AD3800973DF4 /* MapViewActionButton.swift in Sources */,
 				F8117D1E2A65DE9C00973DF4 /* UberApp.swift in Sources */,
 				F8CA55A32A7315DC00CBC6A7 /* Color.swift in Sources */,
