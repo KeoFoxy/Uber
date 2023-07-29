@@ -27,6 +27,7 @@
 		F8CA55A82A73D36C00CBC6A7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA55A72A73D36C00CBC6A7 /* LoginView.swift */; };
 		F8CA55AA2A73D37D00CBC6A7 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA55A92A73D37D00CBC6A7 /* RegistrationView.swift */; };
 		F8CA55AD2A74021600CBC6A7 /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA55AC2A74021600CBC6A7 /* CustomInputField.swift */; };
+		F8CA55AF2A7559EB00CBC6A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8CA55AE2A7559EB00CBC6A7 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		F8CA55A72A73D36C00CBC6A7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F8CA55A92A73D37D00CBC6A7 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		F8CA55AC2A74021600CBC6A7 /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
+		F8CA55AE2A7559EB00CBC6A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				F8117D2E2A65DEE800973DF4 /* Managers */,
 				F8117D2C2A65DEE400973DF4 /* Models */,
 				F8CA55AB2A7401DA00CBC6A7 /* ReusableItems */,
+				F8CA55AE2A7559EB00CBC6A7 /* GoogleService-Info.plist */,
 				F8117D212A65DE9E00973DF4 /* Assets.xcassets */,
 				F8117D232A65DE9E00973DF4 /* Preview Content */,
 			);
@@ -302,6 +305,7 @@
 			files = (
 				F8117D252A65DE9E00973DF4 /* Preview Assets.xcassets in Resources */,
 				F8117D222A65DE9E00973DF4 /* Assets.xcassets in Resources */,
+				F8CA55AF2A7559EB00CBC6A7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
