@@ -28,7 +28,7 @@ struct SideMenuView: View {
                             .resizable()
                             .scaledToFit()
                             .clipShape(Circle())
-                            .frame(width: 128, height: 128)
+                            .frame(width: 64, height: 64)
                         
                         VStack(alignment: .leading, spacing: 8) {
                             Text(user.fullname)
@@ -90,8 +90,8 @@ struct SideMenuView: View {
 
 struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        SideMenuView(user: User(fullname: "Violet Evergarden",
-                                email: "violetEvergarden@gmail.jk",
+        SideMenuView(user: User(fullname: "Violet",
+                                email: "vio",
                                 uid: "1241241"))
     }
 }
