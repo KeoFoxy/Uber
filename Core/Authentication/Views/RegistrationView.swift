@@ -12,6 +12,7 @@ struct RegistrationView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         ZStack {
@@ -39,18 +40,26 @@ struct RegistrationView: View {
                 
                 VStack {
                     VStack(spacing: 56) {
-                        CustomInputField(text: $fullname, title: "Full Name", placeholder: "Enter your name")
+                        CustomInputField(text: $fullname,
+                                         title: "Full Name",
+                                         placeholder: "Enter your name",
+                                         isCapitalizedField: true)
                         
-                        CustomInputField(text: $email, title: "Email Address", placeholder: "name@example.com")
+                        CustomInputField(text: $email,
+                                         title: "Email Address",
+                                         placeholder: "name@example.com")
                         
-                        CustomInputField(text: $password, title: "Create Password", placeholder: "Enter your password", isSecureField: true)
+                        CustomInputField(text: $password,
+                                         title: "Create Password",
+                                         placeholder: "Enter your password",
+                                         isSecureField: true)
                     }
                     .padding(.leading)
                     
                     Spacer()
                     
                     Button {
-                        
+                        viewModel.registerUser(withEmai: email, password: password, fullname: fullname)
                     } label: {
                         HStack {
                             Text("Sign Up")
