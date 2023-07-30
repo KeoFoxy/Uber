@@ -33,7 +33,7 @@ struct SettingsView: View {
                         NavigationLink {
                             SavedLocationSearchView(config: location)
                         } label: {
-                            CategoryCellView(title: location.title, subtitle: location.subtitle, imageName: location.imageName, fontWeight: .semibold)
+                            CategoryCellView(title: location.title, subtitle: location.subtitle(forUser: user), imageName: location.imageName, fontWeight: .semibold)
                         }
                     }
                 }
