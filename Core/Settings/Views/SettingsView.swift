@@ -61,9 +61,7 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            SettingsView(user: User(fullname: "Violet",
-                                    email: "vio",
-                                    uid: "1241241"))
+            SettingsView(user: dev.mockUser)
         }
     }
 }
