@@ -12,13 +12,12 @@ struct SettingsView: View {
         VStack {
             List {
                 Section {
-                    // User Info Header
-                    HStack {
-                        UserInfoHeader(avatarImageName: "avatar-preview",
-                                       userFullname: "user.fullname",
-                                       userEmail: "user.email",
-                                       isChevronDisplayed: true)
-                    }
+                        // User Info Header
+                    UserInfoHeader(avatarImageName: "avatar-preview",
+                                   userFullname: "user.fullname",
+                                   userEmail: "user.email",
+                                   isChevronDisplayed: true)
+                    .padding(8)
                 }
                 
                 Section("Favourites") {
@@ -39,11 +38,15 @@ struct SettingsView: View {
                 }
             }
         }
+        .navigationTitle("Settings")
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        NavigationStack {
+            SettingsView()
+        }
     }
 }
