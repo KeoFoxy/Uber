@@ -34,12 +34,6 @@ struct CategoryCellView: View {
     /// Cells in favourite category uses `semibold` fonts
     var fontWeight: Font.Weight = .regular
     
-    /// Property that adds a chevron
-    /// Image next to User's name and email
-    /// Used in settings view
-    /// To Show Chevron set `isChevronDisplayed` to `true`
-    var isChevronDisplayed: Bool = false
-    
     // MARK: Body
     var body: some View {
         HStack(spacing: 12) {
@@ -62,15 +56,6 @@ struct CategoryCellView: View {
                         .font(.system(size: 14))
                         .foregroundColor(.gray)
                 }
-            }
-            
-            if isChevronDisplayed {
-                Spacer()
-                
-                Image(systemName: "chevron.right")
-                    .imageScale(.small)
-                    .font(.title2)
-                    .foregroundColor(.gray)
             }
         }
         .padding(4)
