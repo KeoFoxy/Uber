@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LocationSearchView: View {
     @State private var startLocationText = ""
-    @Binding var mapState: MapViewState
     @EnvironmentObject var viewModel: LocationSearchViewModel
     
     var body: some View {
@@ -26,7 +25,7 @@ struct LocationSearchView: View {
                         .frame(width: 1, height: 24)
                     
                     Rectangle()
-                        .fill(Color(.black))
+                        .fill(Color.theme.primaryTextColor)
                         .frame(width: 6, height: 6)
                 }
                 
@@ -52,21 +51,7 @@ struct LocationSearchView: View {
             
             // List view
             
-            ScrollView {
-                VStack(alignment: .leading) {
-                    ForEach(viewModel.results, id: \.self) { result in
-                        LocationSearchResultCell(
-                            title: result.title,
-                            subtitle: result.subtitle)
-                        .onTapGesture {
-                            withAnimation(.spring()) {
-                                viewModel.selectLocation(result)
-                                mapState = .locationSelected
-                            }
-                        }
-                    }
-                }
-            }
+            LocationSearchResultView(viewModel: viewModel, config: .ride)
         }
         .background(Color.theme.backgroundColor)
         .background(.white)
@@ -75,6 +60,7 @@ struct LocationSearchView: View {
 
 struct LocationSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        LocationSearchView(mapState: .constant(MapViewState.searchingForLocation))
+        LocationSearchView()
+            .environmentObject(LocationSearchViewModel())
     }
 }

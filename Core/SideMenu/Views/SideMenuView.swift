@@ -23,24 +23,10 @@ struct SideMenuView: View {
                     // TODO: Receive profile from database
                     //       Also add an option to upload photo
                     //       From photos
-                    HStack {
-                        Image("avatar-preview")
-                            .resizable()
-                            .scaledToFit()
-                            .clipShape(Circle())
-                            .frame(width: 64, height: 64)
-                        
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text(user.fullname)
-                                .font(.system(size: 20, weight: .semibold))
-                                .multilineTextAlignment(.leading)
-                            
-                            Text(user.email)
-                                .font(.system(size: 14))
-                                .accentColor(Color.theme.primaryTextColor)
-                                .opacity(0.77)
-                        }
-                    }
+                    
+                    UserInfoHeader(avatarImageName: "avatar-preview",
+                                   userFullname: user.fullname,
+                                   userEmail: user.email)
                     
                     /// Become a driver
                     
@@ -78,8 +64,18 @@ struct SideMenuView: View {
                         }
                     }
                 }
-                .navigationDestination(for: SideMenuOptionViewModel.self) { viewModel in
-                    Text(viewModel.title)
+                .navigationDestination(for: SideMenuOptionViewModel.self) {
+                    viewModel in
+                    switch viewModel {
+                        case .trips:
+                            Text("Trips")
+                        case .wallet:
+                            Text("break")
+                        case .settings:
+                            SettingsView(user: user)
+                        case .messages:
+                            Text("Messages")
+                    }
                 }
                 
                 Spacer()
@@ -90,8 +86,10 @@ struct SideMenuView: View {
 
 struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        SideMenuView(user: User(fullname: "Violet",
-                                email: "vio",
-                                uid: "1241241"))
+        NavigationStack {
+            SideMenuView(user: User(fullname: "Violet",
+                                    email: "vio",
+                                    uid: "1241241"))
+        }
     }
 }

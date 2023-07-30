@@ -7,6 +7,12 @@
 
 import Foundation
 import MapKit
+import Firebase
+
+enum LocationResultsViewConfig {
+    case ride
+    case saveLocation(SavedLocationViewModel)
+}
 
 class LocationSearchViewModel: NSObject, ObservableObject {
     
@@ -36,7 +42,8 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     
     //MARK: Helpers
     
-    func selectLocation(_ localSearch: MKLocalSearchCompletion) {
+    func selectLocation(_ localSearch: MKLocalSearchCompletion, config: LocationResultsViewConfig) {
+        
         locationSearch(forLocalSearchCompletion: localSearch) { response, error in
             if let error = error {
                 print("DEBUG: Location search failed with error: \(error)")
@@ -44,8 +51,22 @@ class LocationSearchViewModel: NSObject, ObservableObject {
             }
             guard let item = response?.mapItems.first else { return }
             let coordinate = item.placemark.coordinate
-            self.selectedUberLocation = UberLocation(title: localSearch.title, coordinate: coordinate)
-            print("DEBUG: Location Coordinates: \(coordinate)")
+            
+            switch config {
+                case .ride:
+                    self.selectedUberLocation = UberLocation(title: localSearch.title, coordinate: coordinate)
+                case .saveLocation(let viewModel):
+                    guard let uid = Auth.auth().currentUser?.uid else { return }
+                    let savedLocation = SavedLocation(title: localSearch.title,
+                                                      address: localSearch.subtitle,
+                                                      coordinates: GeoPoint(latitude: coordinate.latitude,
+                                                                            longitude: coordinate.longitude))
+                    guard let encodedLocation = try? Firestore.Encoder().encode(savedLocation) else { return }
+                    
+                    Firestore.firestore().collection("users").document(uid).updateData([
+                        viewModel.databaseKey: encodedLocation
+                    ])
+            }
         }
     }
     

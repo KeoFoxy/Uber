@@ -29,7 +29,7 @@ struct CustomInputField: View {
     /// By default it is white
     /// It is used as a foreground color
     /// of title and placeholder
-    let textColor: Color = .white
+    var textColor: Color = .white
     
     /// Settings for password field
     /// By default it shows typing
