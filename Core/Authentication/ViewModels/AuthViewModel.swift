@@ -26,10 +26,13 @@ class AuthViewModel: ObservableObject {
             }
             
             self.userSession = result?.user
+            self.fetchUser()
         }
     }
     
     func registerUser(withEmai email: String, password: String, fullname: String) {
+        guard let location = LocationManager.shared.userLocation else { return }
+        
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("DEBUG: Failed to sign up with error \(error.localizedDescription)")
@@ -37,14 +40,14 @@ class AuthViewModel: ObservableObject {
             }
             guard let firebaseUser = result?.user else { return }
             self.userSession = firebaseUser
-            
+
             let user = User(fullname: fullname,
                             email: email,
                             uid: firebaseUser.uid,
-                            coordinates: GeoPoint(latitude: 37.38, longitude: -122.05),
+                            coordinates: GeoPoint(latitude: location.latitude, longitude: location.longitude),
                             accountType: .driver)
+            self.currentUser = user
             guard let encodedUser = try? Firestore.Encoder().encode(user) else { return }
-            
             Firestore.firestore().collection("users").document(firebaseUser.uid).setData(encodedUser)
         }
     }
@@ -59,16 +62,11 @@ class AuthViewModel: ObservableObject {
     }
     
     func fetchUser() {
-        print("DEBUG: Fetch called")
-        
         guard let uid = self.userSession?.uid else { return }
         Firestore.firestore().collection("users").document(uid).getDocument { snapshot, _ in
             guard let snapshot = snapshot else { return }
             
             guard let user = try? snapshot.data(as: User.self) else { return }
-            
-            print("DEBUG: User is \(user.fullname)")
-            print("DEBUG: Email is \(user.email)")
             
             self.currentUser = user
         }
