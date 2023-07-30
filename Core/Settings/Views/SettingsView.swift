@@ -28,10 +28,10 @@ struct SettingsView: View {
                     .padding(8)
                 }
                 
-                Section("Favourites") {
+                Section("Favorites") {
                     ForEach(SavedLocationViewModel.allCases) { location in
                         NavigationLink {
-                            SavedLocationSearchView()
+                            SavedLocationSearchView(config: location)
                         } label: {
                             CategoryCellView(title: location.title, subtitle: location.subtitle, imageName: location.imageName, fontWeight: .semibold)
                         }
