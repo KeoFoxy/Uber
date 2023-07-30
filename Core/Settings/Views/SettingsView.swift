@@ -29,9 +29,13 @@ struct SettingsView: View {
                 }
                 
                 Section("Favourites") {
-                    CategoryCellView(title: "Home", subtitle: "Add Home", imageName: "house.circle.fill", fontWeight: .semibold, isChevronDisplayed: true)
-                    
-                    CategoryCellView(title: "Work", subtitle: "Add Work", imageName: "archivebox.circle.fill", fontWeight: .semibold, isChevronDisplayed: true)
+                    ForEach(SavedLocationViewModel.allCases) { location in
+                        NavigationLink {
+                            SavedLocationSearchView()
+                        } label: {
+                            CategoryCellView(title: location.title, subtitle: location.subtitle, imageName: location.imageName, fontWeight: .semibold)
+                        }
+                    }
                 }
                 
                 Section("Settings") {

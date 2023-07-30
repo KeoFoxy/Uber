@@ -22,6 +22,9 @@
 		F83742A62A76A4B900D1CC33 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83742A52A76A4B900D1CC33 /* SettingsView.swift */; };
 		F83742AA2A76A58900D1CC33 /* UserInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83742A92A76A58900D1CC33 /* UserInfoHeader.swift */; };
 		F83742AC2A76B02F00D1CC33 /* CategoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83742AB2A76B02F00D1CC33 /* CategoryCellView.swift */; };
+		F83742AE2A76E6FF00D1CC33 /* SavedLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83742AD2A76E6FF00D1CC33 /* SavedLocationViewModel.swift */; };
+		F83742B02A76ED8000D1CC33 /* SavedLocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83742AF2A76ED8000D1CC33 /* SavedLocationSearchView.swift */; };
+		F83742B22A76F71000D1CC33 /* LocationSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83742B12A76F71000D1CC33 /* LocationSearchResultsView.swift */; };
 		F8B53F432A715963002AD317 /* RideRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B53F422A715963002AD317 /* RideRequestView.swift */; };
 		F8CA559D2A72A1A600CBC6A7 /* RideType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA559C2A72A1A600CBC6A7 /* RideType.swift */; };
 		F8CA559F2A73032600CBC6A7 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA559E2A73032600CBC6A7 /* Double.swift */; };
@@ -59,6 +62,9 @@
 		F83742A52A76A4B900D1CC33 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F83742A92A76A58900D1CC33 /* UserInfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeader.swift; sourceTree = "<group>"; };
 		F83742AB2A76B02F00D1CC33 /* CategoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCellView.swift; sourceTree = "<group>"; };
+		F83742AD2A76E6FF00D1CC33 /* SavedLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationViewModel.swift; sourceTree = "<group>"; };
+		F83742AF2A76ED8000D1CC33 /* SavedLocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationSearchView.swift; sourceTree = "<group>"; };
+		F83742B12A76F71000D1CC33 /* LocationSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchResultsView.swift; sourceTree = "<group>"; };
 		F8B53F422A715963002AD317 /* RideRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestView.swift; sourceTree = "<group>"; };
 		F8CA559C2A72A1A600CBC6A7 /* RideType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideType.swift; sourceTree = "<group>"; };
 		F8CA559E2A73032600CBC6A7 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
@@ -219,6 +225,7 @@
 				F8117D402A66AB9700973DF4 /* LocationSearchActivationView.swift */,
 				F8117D442A66AF7C00973DF4 /* LocationSearchView.swift */,
 				F8117D462A66B3FF00973DF4 /* LocationSearchResultCell.swift */,
+				F83742AF2A76ED8000D1CC33 /* SavedLocationSearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -251,6 +258,7 @@
 		F83742A82A76A4BF00D1CC33 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F83742AD2A76E6FF00D1CC33 /* SavedLocationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -295,6 +303,7 @@
 				F8CA55AC2A74021600CBC6A7 /* CustomInputField.swift */,
 				F83742A92A76A58900D1CC33 /* UserInfoHeader.swift */,
 				F83742AB2A76B02F00D1CC33 /* CategoryCellView.swift */,
+				F83742B12A76F71000D1CC33 /* LocationSearchResultsView.swift */,
 			);
 			path = ReusableItems;
 			sourceTree = "<group>";
@@ -406,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8117D492A66DAE100973DF4 /* LocationSearchViewModel.swift in Sources */,
+				F83742B02A76ED8000D1CC33 /* SavedLocationSearchView.swift in Sources */,
 				F8117D452A66AF7C00973DF4 /* LocationSearchView.swift in Sources */,
 				F83742AC2A76B02F00D1CC33 /* CategoryCellView.swift in Sources */,
 				F8117D3B2A65EC2400973DF4 /* LocationManager.swift in Sources */,
@@ -414,6 +424,8 @@
 				F8CA559F2A73032600CBC6A7 /* Double.swift in Sources */,
 				F8CA55AA2A73D37D00CBC6A7 /* RegistrationView.swift in Sources */,
 				F8CA55BA2A75615700CBC6A7 /* AuthViewModel.swift in Sources */,
+				F83742B22A76F71000D1CC33 /* LocationSearchResultsView.swift in Sources */,
+				F83742AE2A76E6FF00D1CC33 /* SavedLocationViewModel.swift in Sources */,
 				F8117D4B2A6861FE00973DF4 /* MapViewState.swift in Sources */,
 				F83742A62A76A4B900D1CC33 /* SettingsView.swift in Sources */,
 				F8CA55BC2A758BC500CBC6A7 /* User.swift in Sources */,
