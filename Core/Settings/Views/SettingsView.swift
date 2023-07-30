@@ -8,14 +8,22 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var viewModel: AuthViewModel
+    
+    private let user: User
+    
+    init(user: User) {
+        self.user = user
+    }
+    
     var body: some View {
         VStack {
             List {
                 Section {
                         // User Info Header
                     UserInfoHeader(avatarImageName: "avatar-preview",
-                                   userFullname: "user.fullname",
-                                   userEmail: "user.email",
+                                   userFullname: user.fullname,
+                                   userEmail: user.email,
                                    isChevronDisplayed: true)
                     .padding(8)
                 }
@@ -35,6 +43,9 @@ struct SettingsView: View {
                 Section("Account") {
                     CategoryCellView(title: "Make Money Driving", imageName: "dollarsign.circle.fill", imageColor: Color(.systemGreen))
                     CategoryCellView(title: "Sign Out", imageName: "arrow.left.circle.fill", imageColor: Color(.systemRed))
+                        .onTapGesture {
+                            viewModel.signOut()
+                        }
                 }
             }
         }
@@ -46,7 +57,9 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            SettingsView()
+            SettingsView(user: User(fullname: "Violet",
+                                    email: "vio",
+                                    uid: "1241241"))
         }
     }
 }
