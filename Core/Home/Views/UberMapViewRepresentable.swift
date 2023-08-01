@@ -11,9 +11,9 @@ import MapKit
 struct UberMapViewRepresentable: UIViewRepresentable {
     
     let mapView = MKMapView()
-    let locationManager = LocationManager.shared
     @Binding var mapState: MapViewState
     @EnvironmentObject var locationViewModel: LocationSearchViewModel
+    @EnvironmentObject var homeViewModel: HomeViewModel
     
     func makeUIView(context: Context) -> some UIView {
         mapView.delegate = context.coordinator
@@ -29,6 +29,7 @@ struct UberMapViewRepresentable: UIViewRepresentable {
         switch mapState {
             case .noInput:
                 context.coordinator.clearMapViewAndRecenterOnUserLocation()
+                context.coordinator.addDriversToMap(homeViewModel.drivers)
                 break
             case .searchingForLocation:
                 break
@@ -87,19 +88,17 @@ extension UberMapViewRepresentable {
             return polyline
         }
         
-            // MARK: - Helpers
+        // MARK: - Helpers
         
         func addAndSelectAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
             parent.mapView.removeAnnotations(parent.mapView.annotations)
             let anno = MKPointAnnotation()
             anno.coordinate = coordinate
             
-            print("DEBUG: Annotation Coordinated getted: \(anno.coordinate)")
-            
             self.parent.mapView.addAnnotation(anno)
             self.parent.mapView.selectAnnotation(anno, animated: true)
             
-            parent.mapView.showAnnotations(parent.mapView.annotations, animated: true)
+//            parent.mapView.showAnnotations(parent.mapView.annotations, animated: true)
         }
         
         func configurePolyline(withDestinationCoordinate coordinate: CLLocationCoordinate2D) {
@@ -121,6 +120,16 @@ extension UberMapViewRepresentable {
             
             if let currentRegion = currentRegion {
                 parent.mapView.setRegion(currentRegion, animated: true)
+            }
+        }
+        
+        func addDriversToMap(_ drivers: [User]) {
+            for driver in drivers {
+                let coordinate = CLLocationCoordinate2D(latitude: driver.coordinates.latitude,
+                                                        longitude: driver.coordinates.longitude)
+                let anno = MKPointAnnotation()
+                anno.coordinate = coordinate
+                self.parent.mapView.addAnnotation(anno)
             }
         }
     }
