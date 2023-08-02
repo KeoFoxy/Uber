@@ -16,6 +16,7 @@ class HomeViewModel: NSObject, ObservableObject {
     // MARK: - Properties
     
     @Published var drivers = [User]()
+    @Published var trip: Trip?
     
     private let service = UserService.shared
     private var cancellable = Set<AnyCancellable>()
@@ -48,6 +49,22 @@ class HomeViewModel: NSObject, ObservableObject {
     
     // MARK: - User API
     
+    func fetchUser() {
+        service.$user
+            .sink { user in
+                self.currentUser = user
+                guard let user = user else { return }
+                user.accountType == .passenger ? self.fetchDrivers() : self.fetchTrips()
+                self.fetchDrivers()
+            }
+            .store(in: &cancellable)
+    }
+}
+
+// MARK: - Passenger API
+
+extension HomeViewModel {
+    
     func fetchDrivers() {
         Firestore.firestore().collection("users")
             .whereField("accountType", isEqualTo: AccoutnType.driver.rawValue)
@@ -59,21 +76,6 @@ class HomeViewModel: NSObject, ObservableObject {
             }
     }
     
-    func fetchUser() {
-        service.$user
-            .sink { user in
-                self.currentUser = user
-                guard let user = user else { return }
-                guard user.accountType == .passenger else { return }
-                self.fetchDrivers()
-            }
-            .store(in: &cancellable)
-    }
-}
-
-// MARK: - Passenger API
-
-extension HomeViewModel {
     func requestTrip() {
         guard let driver = drivers.first else { return }
         guard let currentUser = currentUser else { return }
@@ -114,6 +116,18 @@ extension HomeViewModel {
 
 extension HomeViewModel {
     
+    func fetchTrips() {
+        guard let currentUser = currentUser, currentUser.accountType == .driver else { return }
+        
+        Firestore.firestore().collection("trips")
+            .whereField("driverUid", isEqualTo: currentUser.uid)
+            .getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents, let document = documents.first else { return }
+                guard let trip = try? document.data(as: Trip.self) else { return }
+                
+                self.trip = trip
+            }
+    }
 }
 
 // MARK: - Location Search Helpers
