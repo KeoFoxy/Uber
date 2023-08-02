@@ -23,12 +23,11 @@ struct Trip: Identifiable, Codable {
     let dropoffLocationName: String
     
     let pickupLocationAddress: String
-    let dropoffLocationAddress: String
     
     let pickupLocation: GeoPoint
     let dropoffLocation: GeoPoint
     
     let tripCost: Double
-    let tripDistance: Double
-    let tripDuration: Int
+    var tripDistance: Double = 0
+    var tripDuration: Int = 0
 }

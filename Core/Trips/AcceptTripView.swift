@@ -33,7 +33,7 @@ struct AcceptTripView: View {
             // Would u like to pick up View
             VStack {
                 HStack {
-                    Text("Would you like to pickup this passenger")
+                    Text("Would you like to pickup this passenger?")
                         .font(.headline)
                         .fontWeight(.semibold)
                         .lineLimit(2)
@@ -43,7 +43,7 @@ struct AcceptTripView: View {
                     Spacer()
                     
                     VStack {
-                        Text("10")
+                        Text("\(trip.tripDuration)")
                             .bold()
                         
                         Text("min")
@@ -118,7 +118,7 @@ struct AcceptTripView: View {
                     
                     // Distance
                     VStack(alignment: .center) {
-                        Text("5.2")
+                        Text(trip.tripDistance.distanceInMilesString())
                             .font(.headline)
                             .fontWeight(.semibold)
                         
@@ -177,8 +177,11 @@ struct AcceptTripView: View {
             }
             .padding(.top)
             .padding(.horizontal)
+            .padding(.bottom, 24)
         }
         .background(Color.theme.backgroundColor)
+        .cornerRadius(16)
+        .shadow(color: Color.theme.secondaryBackgroundColor, radius: 20)
     }
 }
 

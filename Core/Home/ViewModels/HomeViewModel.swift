@@ -86,6 +86,8 @@ extension HomeViewModel {
         getPlaceMark(forLocation: userLocation) { placemark, error in
             guard let placemark = placemark else { return }
             
+            let tripCost = self.computeRidePrice(forType: .uberX)
+            
             let trip = Trip(id: NSUUID().uuidString,
                             passengerUid: currentUser.uid,
                             driverUid: driver.uid,
@@ -95,13 +97,12 @@ extension HomeViewModel {
                             driverLocation: driver.coordinates,
                             pickupLocationName: placemark.name ?? "Current location",
                             dropoffLocationName: dropoffLocation.title,
-                            pickupLocationAddress: "Pick up address",
-                            dropoffLocationAddress: "123 Main Street",
+                            pickupLocationAddress: self.addressFromPlacemark(placemark),
                             pickupLocation: currentUser.coordinates,
                             dropoffLocation: dropoffGeoPoint,
-                            tripCost: 50,
-                            tripDistance: 3.6,
-                            tripDuration: 20
+                            tripCost: tripCost,
+                            tripDistance: 0,
+                            tripDuration: 0
             )
             
             guard let encodedTrip = try? Firestore.Encoder().encode(trip) else { return }
@@ -126,6 +127,15 @@ extension HomeViewModel {
                 guard let trip = try? document.data(as: Trip.self) else { return }
                 
                 self.trip = trip
+                
+                self.getDestinationRoute(from: trip.driverLocation.toCoordinate(),
+                                         to: trip.pickupLocation.toCoordinate()) { route in
+                    print("DEBUG: Expected travel time to passenger: \(Int(route.expectedTravelTime / 60))")
+                    print("DEBUG: Distance from passenger \(route.distance.distanceInMilesString())")
+                    
+                    self.trip?.tripDuration = Int(route.expectedTravelTime / 60)
+                    self.trip?.tripDistance = route.distance
+                }
             }
     }
 }
@@ -133,6 +143,24 @@ extension HomeViewModel {
 // MARK: - Location Search Helpers
 
 extension HomeViewModel {
+    
+    func addressFromPlacemark(_ placemark: CLPlacemark) -> String {
+        var result = ""
+        
+        if let thoroughfare = placemark.thoroughfare {
+            result += thoroughfare
+        }
+        
+        if let subthoroughfare = placemark.subThoroughfare {
+            result += " \(subthoroughfare)"
+        }
+        
+        if let subadministrativearea = placemark.subAdministrativeArea {
+            result += ", \(subadministrativearea)"
+        }
+        
+        return result
+    }
     
     func getPlaceMark(forLocation location: CLLocation, completion: @escaping(CLPlacemark?, Error?) -> Void) {
         CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
