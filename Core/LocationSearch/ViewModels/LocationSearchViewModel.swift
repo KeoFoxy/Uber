@@ -5,6 +5,8 @@
 //  Created by Alexander Sorokin on 18.07.2023.
 //
 
+/// Deprecated
+
 import Foundation
 import MapKit
 import Firebase
