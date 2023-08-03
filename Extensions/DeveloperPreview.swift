@@ -27,8 +27,7 @@ class DeveloperPreview {
                         workLocation: nil
     )
     
-    let mockTrip = Trip(id: NSUUID().uuidString,
-                        passengerUid: NSUUID().uuidString,
+    let mockTrip = Trip(passengerUid: NSUUID().uuidString,
                         driverUid: NSUUID().uuidString,
                         passengerName: "Alice Schuberg",
                         driverName: "Violet Evergarden",
@@ -41,6 +40,7 @@ class DeveloperPreview {
                         dropoffLocation: .init(latitude: 37.079, longitude: -122.23),
                         tripCost: 20,
                         tripDistance: 20,
-                        tripDuration: 20
+                        tripDuration: 20,
+                        state: .requested
     )
 }

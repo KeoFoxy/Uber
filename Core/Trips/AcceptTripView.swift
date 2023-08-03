@@ -9,6 +9,10 @@ import SwiftUI
 import MapKit
 
 struct AcceptTripView: View {
+    
+    // MARK: - Properties
+    
+    @EnvironmentObject var viewModel: HomeViewModel
     @State private var region: MKCoordinateRegion
     let trip: Trip
     let annotationItem: UberLocation
@@ -30,6 +34,7 @@ struct AcceptTripView: View {
                 .frame(width: 48, height: 6)
                 .padding(.top, 8)
             
+            // MARK: - Header
             // Would u like to pick up View
             VStack {
                 HStack {
@@ -59,7 +64,7 @@ struct AcceptTripView: View {
                 Divider()
             }
             
-            // User info view
+            // MARK: - User info view
             
             VStack {
                 HStack {
@@ -98,7 +103,7 @@ struct AcceptTripView: View {
             }
             .padding()
             
-            // Pick up location view
+            // MARK: - Pick up location view
             
             VStack {
                 // Trip location info
@@ -143,11 +148,11 @@ struct AcceptTripView: View {
                 Divider()
             }
             
-            // Action buttons
+            // MARK: -Action buttons
             
             HStack {
                 Button {
-                    
+                    viewModel.rejectTrip()
                 } label: {
                     Text("Reject")
                         .font(.headline)
@@ -162,7 +167,7 @@ struct AcceptTripView: View {
                 Spacer()
                 
                 Button {
-                    
+                    viewModel.acceptTrip()
                 } label: {
                     Text("Accept")
                         .font(.headline)
