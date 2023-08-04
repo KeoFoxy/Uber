@@ -5,10 +5,10 @@ A clone of the well-known taxi service or private drivers - Uber. An adaptive in
 ## Preview
 
 <div style='display: flex'>
-    <img src='../imgs/main.png' height=350>
-    <img src='../imgs/left-screen-dark.png' height=350>
-    <img src='../imgs/settings.png' height=350>
-    <img src='../imgs/ride_request.png' height=345>
+    <img src='../service/imgs/main.png' height=350>
+    <img src='../service/imgs/left-screen-dark.png' height=350>
+    <img src='../service/imgs/settings.png' height=350>
+    <img src='../service/imgs/ride_request.png' height=345>
 </div>
 
 ## Features
