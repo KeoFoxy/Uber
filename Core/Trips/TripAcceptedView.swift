@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TripAcceptedView: View {
+    @EnvironmentObject var viewModel: HomeViewModel
+    
     var body: some View {
         VStack {
             Capsule()
@@ -15,85 +17,88 @@ struct TripAcceptedView: View {
                 .frame(width: 48, height: 6)
                 .padding(.top, 8)
             
-            // MARK: - Pickup Info View
-            VStack {
-                HStack {
-                    Text("Meet your driver at Apple Campus for you trip to Starbucks")
-                        .font(.body)
-                        .frame(height: 44)
-                        .lineLimit(2)
-                        .padding(.trailing)
-                    
-                    Spacer()
-                    
-                    VStack {
-                        Text("10")
-                            .bold()
+            if let trip = viewModel.trip {
+                    // MARK: - Pickup Info View
+                VStack {
+                    HStack {
+                        Text("Meet your driver at \(trip.pickupLocationName) for you trip to \(trip.dropoffLocationName)")
+                            .font(.body)
+                            .frame(height: 44)
+                            .lineLimit(2)
+                            .padding(.trailing)
                         
-                        Text("min")
-                            .bold()
-                    }
-                    .frame(width: 56, height: 56)
-                    .foregroundColor(.white)
-                    .background(Color(.systemBlue))
-                    .cornerRadius(10)
-                }
-                .padding()
-                
-                Divider()
-            }
-            
-            // MARK: - Driver Info View
-            VStack {
-                HStack {
-                    Image("avatar-preview")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 80, height: 80)
-                        .clipShape(Circle())
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Alice Schuberg")
-                            .fontWeight(.bold)
+                        Spacer()
                         
-                        HStack {
-                            Image(systemName: "star.fill")
-                                .foregroundColor(Color(.systemYellow))
-                                .imageScale(.small)
+                        VStack {
+                            Text("\(trip.tripDuration)")
+                                .bold()
                             
-                            Text("4.9")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
+                            Text("min")
+                                .bold()
                         }
+                        .frame(width: 56, height: 56)
+                        .foregroundColor(.white)
+                        .background(Color(.systemBlue))
+                        .cornerRadius(10)
                     }
+                    .padding()
                     
-                    Spacer()
-                    
-                    // MARK: - Driver Vehicle Info
-                    
-                    VStack(alignment: .center) {
-                        Image("uber-x")
+                    Divider()
+                }
+                
+                    // MARK: - Driver Info View
+                VStack {
+                    HStack {
+                        Image("avatar-preview")
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 120, height: 64)
+                            .frame(width: 80, height: 80)
+                            .clipShape(Circle())
                         
-                        HStack {
-                            Text("BMW 5 -")
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.gray)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(trip.driverName)
+                                .fontWeight(.bold)
                             
-                            Text("46GS90")
-                                .font(.system(size: 14, weight: .semibold))
+                            HStack {
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(Color(.systemYellow))
+                                    .imageScale(.small)
+                                
+                                Text("4.9")
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+                            }
                         }
-                        .frame(width: 160)
-                        .padding(.bottom)
+                        
+                        Spacer()
+                        
+                            // MARK: - Driver Vehicle Info
+                        
+                        VStack(alignment: .center) {
+                            Image("uber-x")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 120, height: 64)
+                            
+                            HStack {
+                                Text("BMW 5 -")
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.gray)
+                                
+                                Text("46GS90")
+                                    .font(.system(size: 14, weight: .semibold))
+                            }
+                            .frame(width: 160)
+                            .padding(.bottom)
+                        }
                     }
+                    
+                    Divider()
                 }
-                
-                Divider()
+                .padding()
             }
-            .padding()
             
+
             Button {
                 print("DEBUG: Cancel trip")
             } label: {
@@ -115,5 +120,6 @@ struct TripAcceptedView: View {
 struct TripAcceptedView_Previews: PreviewProvider {
     static var previews: some View {
         TripAcceptedView()
+            .environmentObject(HomeViewModel())
     }
 }
