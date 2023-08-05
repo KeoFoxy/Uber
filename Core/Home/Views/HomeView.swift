@@ -64,30 +64,8 @@ extension HomeView {
             }
             
             if let user = authViewModel.currentUser {
-                if user.accountType == .passenger {
-                    if mapState == .locationSelected || mapState == .polylineAdded{
-                        RideRequestView()
-                            .transition(.move(edge: .bottom))
-                    } else if mapState == .tripRequested {
-                        TripLoadingView()
-                            .transition(.move(edge: .bottom))
-                    } else if mapState == .tripAccepted {
-                        TripAcceptedView()
-                            .transition(.move(edge: .bottom))
-                    } else if mapState == .tripRejected {
-                        // Show rejection view
-                    }
-                } else {
-                    if let trip = homeViewModel.trip {
-                        if mapState == .tripRequested {
-                            AcceptTripView(trip: trip)
-                                .transition(.move(edge: .bottom))
-                        } else if mapState == .tripAccepted {
-                            PickupPassengerView(trip: trip)
-                                .transition(.move(edge: .bottom))
-                        }
-                    }
-                }
+                homeViewModel.viewForState(mapState, user: user)
+                    .transition(.move(edge: .bottom))
             }
         }
         .edgesIgnoringSafeArea(.bottom)
@@ -102,7 +80,10 @@ extension HomeView {
             }
         }
         .onReceive(homeViewModel.$trip) { trip in
-            guard let trip = trip else { return }
+            guard let trip = trip else {
+                self.mapState = .noInput
+                return
+            }
             
             withAnimation(.spring()) {
                 switch trip.state {
@@ -112,6 +93,10 @@ extension HomeView {
                         self.mapState = .tripRejected
                     case .accepted:
                         self.mapState = .tripAccepted
+                    case .passengerCancelled:
+                        self.mapState = .tripCancelledByPassenger
+                    case .driverCancelled:
+                        self.mapState = .tripCancelledByDriver
                 }
             }
         }
