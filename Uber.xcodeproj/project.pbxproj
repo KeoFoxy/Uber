@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F80E70A62A7D9BFC003A3D9C /* TripLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80E70A52A7D9BFC003A3D9C /* TripLoadingView.swift */; };
+		F80E70A82A7D9C4A003A3D9C /* TripAcceptedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80E70A72A7D9C4A003A3D9C /* TripAcceptedView.swift */; };
+		F80E70AA2A7DA174003A3D9C /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80E70A92A7DA174003A3D9C /* Spinner.swift */; };
+		F80E70AE2A7E6A51003A3D9C /* PickupPassengerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80E70AD2A7E6A51003A3D9C /* PickupPassengerView.swift */; };
 		F8117D1E2A65DE9C00973DF4 /* UberApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8117D1D2A65DE9C00973DF4 /* UberApp.swift */; };
 		F8117D222A65DE9E00973DF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8117D212A65DE9E00973DF4 /* Assets.xcassets */; };
 		F8117D252A65DE9E00973DF4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8117D242A65DE9E00973DF4 /* Preview Assets.xcassets */; };
@@ -54,6 +58,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F80E70A52A7D9BFC003A3D9C /* TripLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripLoadingView.swift; sourceTree = "<group>"; };
+		F80E70A72A7D9C4A003A3D9C /* TripAcceptedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripAcceptedView.swift; sourceTree = "<group>"; };
+		F80E70A92A7DA174003A3D9C /* Spinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		F80E70AD2A7E6A51003A3D9C /* PickupPassengerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupPassengerView.swift; sourceTree = "<group>"; };
 		F8117D1A2A65DE9C00973DF4 /* Uber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8117D1D2A65DE9C00973DF4 /* UberApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberApp.swift; sourceTree = "<group>"; };
 		F8117D212A65DE9E00973DF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,6 +120,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F80E70AB2A7E6A0E003A3D9C /* Drivers */ = {
+			isa = PBXGroup;
+			children = (
+				F83742BE2A799B5800D1CC33 /* AcceptTripView.swift */,
+				F80E70AD2A7E6A51003A3D9C /* PickupPassengerView.swift */,
+			);
+			path = Drivers;
+			sourceTree = "<group>";
+		};
+		F80E70AC2A7E6A16003A3D9C /* Passengers */ = {
+			isa = PBXGroup;
+			children = (
+				F80E70A72A7D9C4A003A3D9C /* TripAcceptedView.swift */,
+				F80E70A52A7D9BFC003A3D9C /* TripLoadingView.swift */,
+				F8B53F422A715963002AD317 /* RideRequestView.swift */,
+			);
+			path = Passengers;
+			sourceTree = "<group>";
+		};
 		F8117D112A65DE9C00973DF4 = {
 			isa = PBXGroup;
 			children = (
@@ -131,10 +158,10 @@
 		F8117D1C2A65DE9C00973DF4 = {
 			isa = PBXGroup;
 			children = (
-				F83742BB2A797F5400D1CC33 /* Services */,
 				F8117D312A65DEED00973DF4 /* App */,
 				F8117D302A65DEEB00973DF4 /* Core */,
 				F8117D2F2A65DEE900973DF4 /* Extensions */,
+				F83742BB2A797F5400D1CC33 /* Services */,
 				F8117D2E2A65DEE800973DF4 /* Managers */,
 				F8117D2C2A65DEE400973DF4 /* Models */,
 				F8CA55AB2A7401DA00CBC6A7 /* ReusableItems */,
@@ -297,8 +324,8 @@
 		F8B53F412A715943002AD317 /* Trips */ = {
 			isa = PBXGroup;
 			children = (
-				F8B53F422A715963002AD317 /* RideRequestView.swift */,
-				F83742BE2A799B5800D1CC33 /* AcceptTripView.swift */,
+				F80E70AC2A7E6A16003A3D9C /* Passengers */,
+				F80E70AB2A7E6A0E003A3D9C /* Drivers */,
 			);
 			path = Trips;
 			sourceTree = "<group>";
@@ -332,6 +359,7 @@
 		F8CA55AB2A7401DA00CBC6A7 /* ReusableItems */ = {
 			isa = PBXGroup;
 			children = (
+				F80E70A92A7DA174003A3D9C /* Spinner.swift */,
 				F8CA55AC2A74021600CBC6A7 /* CustomInputField.swift */,
 				F83742A92A76A58900D1CC33 /* UserInfoHeader.swift */,
 				F83742AB2A76B02F00D1CC33 /* CategoryCellView.swift */,
@@ -450,6 +478,7 @@
 				F83742B02A76ED8000D1CC33 /* SavedLocationSearchView.swift in Sources */,
 				F8117D452A66AF7C00973DF4 /* LocationSearchView.swift in Sources */,
 				F83742B82A77261600D1CC33 /* HomeViewModel.swift in Sources */,
+				F80E70A62A7D9BFC003A3D9C /* TripLoadingView.swift in Sources */,
 				F83742AC2A76B02F00D1CC33 /* CategoryCellView.swift in Sources */,
 				F8117D3B2A65EC2400973DF4 /* LocationManager.swift in Sources */,
 				F83742C32A7AD81E00D1CC33 /* GeoPoint.swift in Sources */,
@@ -471,6 +500,8 @@
 				F8117D432A66AD3800973DF4 /* MapViewActionButton.swift in Sources */,
 				F8117D1E2A65DE9C00973DF4 /* UberApp.swift in Sources */,
 				F8CA55A32A7315DC00CBC6A7 /* Color.swift in Sources */,
+				F80E70AE2A7E6A51003A3D9C /* PickupPassengerView.swift in Sources */,
+				F80E70A82A7D9C4A003A3D9C /* TripAcceptedView.swift in Sources */,
 				F8CA55C52A75B8BE00CBC6A7 /* SideMenuOptionView.swift in Sources */,
 				F8117D392A65E1C100973DF4 /* UberMapViewRepresentable.swift in Sources */,
 				F8117D372A65DFD200973DF4 /* HomeView.swift in Sources */,
@@ -483,6 +514,7 @@
 				F8CA55A82A73D36C00CBC6A7 /* LoginView.swift in Sources */,
 				F8CA55AD2A74021600CBC6A7 /* CustomInputField.swift in Sources */,
 				F8CA559D2A72A1A600CBC6A7 /* RideType.swift in Sources */,
+				F80E70AA2A7DA174003A3D9C /* Spinner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
