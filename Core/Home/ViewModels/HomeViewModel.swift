@@ -50,6 +50,26 @@ class HomeViewModel: NSObject, ObservableObject {
     
     // MARK: - Helpers
     
+    var tripCancelledMessage: String {
+        guard let user = currentUser, let trip = trip else { return "" }
+        
+        if user.accountType == .passenger {
+            if trip.state == .driverCancelled {
+                return "Your driver cancelled this trip"
+            } else if trip.state == .passengerCancelled {
+                return "Your trip has been cancelled"
+            }
+        } else {
+            if trip.state == .driverCancelled {
+                return "Your trip has been cancelled"
+            } else if trip.state == .passengerCancelled {
+                return "The trip has been cancelled by the passenger"
+            }
+        }
+        
+        return ""
+    }
+    
     func viewForState(_ state: MapViewState, user: User) -> some View {
         switch state {
             case .polylineAdded, .locationSelected:
@@ -70,10 +90,8 @@ class HomeViewModel: NSObject, ObservableObject {
                         return AnyView(PickupPassengerView(trip: trip))
                     }
                 }
-            case .tripCancelledByPassenger:
-                return AnyView(Text("Trip cancelled by passenger"))
-            case .tripCancelledByDriver:
-                return AnyView(Text("Trip cancelled by driver"))
+            case .tripCancelledByPassenger, .tripCancelledByDriver:
+                return AnyView(TripCancelledView())
             default:
                 break
         }
@@ -83,6 +101,14 @@ class HomeViewModel: NSObject, ObservableObject {
     
     
     // MARK: - User API
+    
+    func deleteTrip() {
+        guard let trip = trip else { return }
+        
+        Firestore.firestore().collection("trips").document(trip.id).delete { _ in
+            self.trip = nil
+        }
+    }
     
     func fetchUser() {
         service.$user

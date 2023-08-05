@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PickupPassengerView: View {
+    @EnvironmentObject var viewModel: HomeViewModel
     let trip: Trip
     
     var body: some View {
@@ -87,7 +88,7 @@ struct PickupPassengerView: View {
             .padding()
             
             Button {
-                print("DEBUG: Cancel trip")
+                viewModel.cancelTripAsDriver()
             } label: {
                 Text("CANCEL TRIP")
                     .fontWeight(.bold)
@@ -107,5 +108,6 @@ struct PickupPassengerView: View {
 struct PickupPassengerView_Previews: PreviewProvider {
     static var previews: some View {
         PickupPassengerView(trip: dev.mockTrip)
+            .environmentObject(HomeViewModel())
     }
 }
